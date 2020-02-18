@@ -18,8 +18,8 @@ after_script:
   # Create lcov report
   - lcov --capture --initial --directory . -o app_base.info
   - lcov --capture --directory . --output-file coverage.info
-  - lcov --remove app_base.info */tests/* --output-file app_base.info
-  - lcov --remove coverage.info */tests/* --output-file coverage.info
+  - lcov --remove app_base.info xmltest.cpp  --output-file app_base.info
+  - lcov --remove coverage.info xmltest.cpp  --output-file coverage.info
   - lcov -a app_base.info -a coverage.info -o coverage.info
   - lcov --list coverage.info
   # Uploading report to CodeCov
