@@ -50,11 +50,9 @@ ifeq (YES, ${PROFILE})
    LDFLAGS  := ${LDFLAGS} -pg
 endif
 
-ifeq (YES, ${COVERAGE})
-   CFLAGS   := ${CFLAGS} -g -O0 --coverage
-   CXXFLAGS := ${CXXFLAGS} -g -O0 --coverage
-   LDFLAGS  := ${LDFLAGS} --coverage
-endif
+CFLAGS   := ${CFLAGS} -g -O0 --coverage
+CXXFLAGS := ${CXXFLAGS} -g -O0 --coverage
+LDFLAGS  := ${LDFLAGS} --coverage
 
 #****************************************************************************
 # Preprocessor directives
