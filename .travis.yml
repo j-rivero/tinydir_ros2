@@ -11,10 +11,8 @@ addons:
 env:
   - BUILD_TYPE=Debug
 script:
-  - export CXXFLAGS="-g -O0 --coverage"
-  - export LDFLAGS="--coverage"
-  - make
-  - make test ARGS="-VV"
+  - make VERBOSE=1 COVERAGE=1
+  - ./xmltest
 
 after_script:
   # Create lcov report

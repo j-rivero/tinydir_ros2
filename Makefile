@@ -13,6 +13,8 @@ DEBUG          := NO
 # PROFILE can be set to YES to include profiling info, or NO otherwise
 PROFILE        := NO
 
+COVERAGE       := YES
+
 # TINYXML_USE_STL can be used to turn on STL support. NO, then STL
 # will not be used. YES will include the STL files.
 TINYXML_USE_STL := NO
@@ -30,7 +32,7 @@ RELEASE_CFLAGS   := -Wall -Wno-unknown-pragmas -Wno-format -O3
 
 LIBS		 :=
 
-DEBUG_CXXFLAGS   := ${DEBUG_CFLAGS} 
+DEBUG_CXXFLAGS   := ${DEBUG_CFLAGS}
 RELEASE_CXXFLAGS := ${RELEASE_CFLAGS}
 
 DEBUG_LDFLAGS    := -g
@@ -50,6 +52,12 @@ ifeq (YES, ${PROFILE})
    CFLAGS   := ${CFLAGS} -pg -O3
    CXXFLAGS := ${CXXFLAGS} -pg -O3
    LDFLAGS  := ${LDFLAGS} -pg
+endif
+
+ifeq (YES, ${COVERAGE})
+   CFLAGS   := ${CFLAGS} -g -O0 --coverage
+   CXXFLAGS := ${CXXFLAGS} -g -O0 --coverage
+   LDFLAGS  := ${LDFLAGS} --coverage
 endif
 
 #****************************************************************************
