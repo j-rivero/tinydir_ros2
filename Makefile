@@ -13,6 +13,8 @@ DEBUG          := NO
 # PROFILE can be set to YES to include profiling info, or NO otherwise
 PROFILE        := NO
 
+COVERAGE       := YES
+
 # TINYXML_USE_STL can be used to turn on STL support. NO, then STL
 # will not be used. YES will include the STL files.
 TINYXML_USE_STL := NO
@@ -30,7 +32,7 @@ RELEASE_CFLAGS   := -Wall -Wno-unknown-pragmas -Wno-format -O3
 
 LIBS		 :=
 
-DEBUG_CXXFLAGS   := ${DEBUG_CFLAGS} 
+DEBUG_CXXFLAGS   := ${DEBUG_CFLAGS}
 RELEASE_CXXFLAGS := ${RELEASE_CFLAGS}
 
 DEBUG_LDFLAGS    := -g
@@ -40,10 +42,6 @@ ifeq (YES, ${DEBUG})
    CFLAGS       := ${DEBUG_CFLAGS}
    CXXFLAGS     := ${DEBUG_CXXFLAGS}
    LDFLAGS      := ${DEBUG_LDFLAGS}
-else
-   CFLAGS       := ${RELEASE_CFLAGS}
-   CXXFLAGS     := ${RELEASE_CXXFLAGS}
-   LDFLAGS      := ${RELEASE_LDFLAGS}
 endif
 
 ifeq (YES, ${PROFILE})
@@ -51,6 +49,10 @@ ifeq (YES, ${PROFILE})
    CXXFLAGS := ${CXXFLAGS} -pg -O3
    LDFLAGS  := ${LDFLAGS} -pg
 endif
+
+CFLAGS   := ${CFLAGS} -g -O0 --coverage
+CXXFLAGS := ${CXXFLAGS} -g -O0 --coverage
+LDFLAGS  := ${LDFLAGS} --coverage
 
 #****************************************************************************
 # Preprocessor directives
