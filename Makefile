@@ -42,10 +42,6 @@ ifeq (YES, ${DEBUG})
    CFLAGS       := ${DEBUG_CFLAGS}
    CXXFLAGS     := ${DEBUG_CXXFLAGS}
    LDFLAGS      := ${DEBUG_LDFLAGS}
-else
-   CFLAGS       := ${RELEASE_CFLAGS}
-   CXXFLAGS     := ${RELEASE_CXXFLAGS}
-   LDFLAGS      := ${RELEASE_LDFLAGS}
 endif
 
 ifeq (YES, ${PROFILE})
